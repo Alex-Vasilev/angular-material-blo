@@ -1,0 +1,7 @@
+<md-content md-theme="docs-dark" layout-gt-sm="column" layout-padding>
+    <h3>Are you sure you want to delete post?</h3>
+    <div layout="row" layout-align="center">
+        <md-button type="button" class="md-warn md-raised md-hue-2"  ng-click='deletePost(post.id, $index)'>Yes</md-button>
+        <md-button type="button" md-no-ink class="md-raised" ng-click='deletePostModal.dismiss("Cancel")'>No</md-button>
+    </div>
+</md-content>

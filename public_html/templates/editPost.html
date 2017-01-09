@@ -1,0 +1,30 @@
+<div layout="column" ng-cloak class="md-inline-form" > 
+    <md-content md-theme="docs-dark"  layout-gt-lg="row" layout-padding>
+        <h1>Edit Post</h1>
+        <div>
+            <md-input-container class="md-block">
+                <label>Title</label>
+                <input type='text'  
+                       ng-model='postEdit.title' 
+                       ng-init="postEdit.title = currentPost.title">
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Body</label>
+                <textarea ng-model='postEdit.body' 
+                          ng-init="postEdit.body = currentPost.body"  
+                          md-maxlength="350" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+            
+            <md-input-container class="md-block">
+                <label>Image URL</label>
+                <input type='text'  
+                       ng-model='postEdit.imageUrl' 
+                       ng-init="postEdit.imageUrl = currentPost.imageUrl">
+            </md-input-container>
+        </div>
+        <div>
+            <md-button md-no-ink class="md-primary md-raised" type="submit" ng-click='editPost(postEdit)'>Submit</md-button>
+            <md-button type="submit" ng-click='editPostModal.dismiss("Cancel")'>Cancel</md-button>
+        </div>
+    </md-content>
+</div>

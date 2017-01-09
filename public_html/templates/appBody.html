@@ -1,0 +1,42 @@
+<md-content md-theme="docs-dark" 
+            layout-gt-sm="row"  
+            layout-align="space-between center"
+            layout-xs="column" 
+            layout-padding>
+    <h1 class="header-name" layout-align="start center" flex="auto"><i class="material-icons md-padding">whatshot</i>Hot Blog </h1>
+    
+    <div layout="row" 
+         layout-xs="column" 
+         ng-cloak 
+         class="md-inline-form"  
+         flex="auto" 
+         layout-align="end center"> 
+        
+        <div class="inp1" layout-padding>    
+            <md-input-container>
+                <label>E-mail</label>
+                <input ng-model="user.title">
+            </md-input-container>
+        </div>
+
+        <div layout-padding class="inp2">   
+            <md-input-container>
+                <label>Password</label>
+                <input ng-model="user.email" type="email">
+            </md-input-container>
+        </div>
+
+        <section layout="row" layout-align="center center" >
+            <md-button  ng-click="openUserModal(post, $index); $event.stopPropagation()">
+                Sign In</md-button>
+            <md-button  ng-click="openUserModal(post, $index); $event.stopPropagation()">
+                Registration</md-button>
+        </section>
+        
+    </div> 
+    
+</md-content>
+
+<div ui-view class="main-content"></div>
+
+<p>Footer</p>

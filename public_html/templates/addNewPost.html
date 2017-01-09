@@ -1,0 +1,46 @@
+<!--<div class="modal-header">
+    Новый пользователь
+</div>
+<div class='modal-body'>
+    <form name='myForm' >
+        <div class="form-group">
+            <input type="text" class="form-control" required ng-model='user.name' placeholder="Имя">
+        </div>
+        <div class="form-group">
+            <input type='email' class="form-control" ng-model='user.email' placeholder="E-mail">
+        </div>
+        <div class="form-group">
+            <input type='street' class="form-control" ng-model='user.adress.street' placeholder="Улица">
+        </div>
+        <div class="form-group">
+            <input type='city' class="form-control" ng-model='user.adress.city' placeholder="Город">
+        </div>
+        <button ng-disabled="">Add</button>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click='ok(user)'>submit</button>
+    <button type="button" class="btn btn-danger" ng-click='addNewUserModal.dismiss("Cancel")'>close</button>
+</div>-->
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-content md-theme="docs-dark" layout-gt-lg="row" layout-padding>
+        <h1>Add New Post</h1>
+        <div>
+            <md-input-container class="md-block">
+                <label>Title</label>
+                <input type='text' ng-model='post.title'>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Body</label>
+                <textarea ng-model="post.body" md-maxlength="350" rows="6" md-select-on-focus></textarea>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Image URl</label>
+                <input type='text' ng-model='post.imageUrl'>
+            </md-input-container>
+        </div>
+        <div>
+            <md-button class="md-primary" type="submit" ng-click='ok(post)'>Submit</md-button>
+        </div>
+    </md-content>
+</div>
