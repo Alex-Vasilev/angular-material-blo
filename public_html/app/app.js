@@ -9,6 +9,21 @@ var app = angular.module('myApp', [
     'auth0.lock',
     'angular-jwt'
 ]);
+app.run(run);
+run.$inject = ['$rootScope', 'authService', 'lock'];
+function run($rootScope, authService, lock) {
+
+    $rootScope.authService = authService;
+
+    // Register the authentication listener that is
+    // set up in auth.service.js
+    authService.registerAuthenticationListener();
+
+    // Register the synchronous hash parser
+    // when using UI Router
+    lock.interceptHash();
+}
+
 app.config(function ($stateProvider, lockProvider, $urlRouterProvider, $mdThemingProvider) {
     $stateProvider.
             state('app', {
@@ -22,28 +37,29 @@ app.config(function ($stateProvider, lockProvider, $urlRouterProvider, $mdThemin
                             defer.resolve(data);
 //                            console.log('a');
                         }).error(function (data) {
-                            defer.reject(data)
+                            defer.reject(data);
                         });
                         return defer.promise;
                     }
-                }
+                },
+                controllerAs: 'vm'
             }).
             state('app.posts', {
                 url: '/posts',
                 templateUrl: 'templates/posts.html',
-                controller: 'PostsCtrl',
-                resolve: {
-                    myResolve: function ($q, postRestApiFactory) {
-                        var defer = $q.defer();
-                        postRestApiFactory.getPosts().success(function (data) {
-                            defer.resolve(data);
-//                            console.log('a');
-                        }).error(function (data) {
-                            defer.reject(data)
-                        });
-                        return defer.promise;
-                    }
-                }
+                controller: 'PostsCtrl'
+//                resolve: {
+//                    myResolve: function ($q, postRestApiFactory) {
+//                        var defer = $q.defer();
+//                        postRestApiFactory.getPosts().success(function (data) {
+//                            defer.resolve(data);
+////                            console.log('a');
+//                        }).error(function (data) {
+//                            defer.reject(data)
+//                        });
+//                        return defer.promise;
+//                    }
+//                }
             }).
             state('app.post', {
                 url: '/post/{id}',
@@ -57,7 +73,7 @@ app.config(function ($stateProvider, lockProvider, $urlRouterProvider, $mdThemin
     $urlRouterProvider.otherwise('/app/posts');
     $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('yellow', {
-                'default': '300',
+                'default': '300'
 //      'hue-1': '400'
             })
             .warnPalette('red', {

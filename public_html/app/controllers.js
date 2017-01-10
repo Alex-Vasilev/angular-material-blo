@@ -1,37 +1,17 @@
 angular.module('controllers', []).
         controller('MainCtrl', function ($scope) {
         }).
-        controller('AppBodyCtrl', function ($scope, myResolve, $rootScope, $state, $uibModal, postRestApiFactory) {
-            $scope.users = [];
-            $scope.users = myResolve;
-
-            $scope.openUserModal = function () {
-                $scope.addNewUserModal = $uibModal.open({
-                    templateUrl: 'templates/addNewUser.html',
-                    scope: $scope,
-                    size: 'lg',
-                    animation: true
-                });
-
-                $scope.ok = function (post) {
-                    postRestApiFactory.setPost(post).success(function (data) {
-                        $scope.posts.push(data);
-                        $scope.addNewPostModal.close();
-                        console.log(data);
-                        console.log($scope.posts);
-                    }).error(function (data) {
-                        console.log(data);
-                    });
-                };
-            };
+        controller('AppBodyCtrl', function (authService) {
+            var vm = this;
+            vm.authService = authService;
         }).
         controller('AppHeader', function ($scope) {
         }).
         controller('AppFooter', function ($scope) {
         }).
-        controller('PostsCtrl', function ($scope, myResolve, $rootScope, $state, $uibModal, postRestApiFactory) {
-            $scope.posts = [];
-
+        controller('PostsCtrl', function ($scope, myResolve, $state, $uibModal, postRestApiFactory) {
+            $scope.posts = myResolve;
+            
             $scope.postInfo = function (id) {
                 $state.go('app.post', {id: id});
             };
@@ -49,14 +29,11 @@ angular.module('controllers', []).
                 postRestApiFactory.setPost(post).success(function (data) {
                     $scope.posts.push(data);
                     $scope.addNewPostModal.close();
-                    console.log(data);
-                    console.log($scope.posts);
                 }).error(function (data) {
                     console.log(data);
                 });
             };
-
-            $scope.posts = myResolve;
+            
 //            pagination
             $scope.totalItems = $scope.posts.length;
             $scope.pageSize = 9;
@@ -111,16 +88,15 @@ angular.module('controllers', []).
                 } else {
                     $scope.categoryIncludes.push(category);
                 }
-            }
+            };
 
             $scope.categoryFilter = function (posts) {
                 if ($scope.categoryIncludes.length > 0) {
                     if ($.inArray(posts.category, $scope.categoryIncludes) < 0)
                         return;
                 }
-
                 return posts;
-            }
+            };
 
 //            $scope.filter = {};
 ////
@@ -158,11 +134,4 @@ angular.module('controllers', []).
                     success(function (data) {
                         $scope.postInfo = data;
                     });
-        }).
-        controller('LoginController',  function (authService) {
-
-    var vm = this;
-
-    vm.authService = authService;
-
-  });
+        });

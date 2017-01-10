@@ -24,19 +24,15 @@
         </md-card>
     </md-content>
     <md-content class="md-padding" flex="30" >
-
         <md-input-container class="md-block">
             <label><i class="material-icons">search</i></label>
             <input ng-model="search.$">
-
         </md-input-container>
         <md-button class="md-raised" ng-click="openPostModal()" >
             Add new Post
         </md-button>
-
         <fieldset class="standard md-padding" >
             <legend>Categories </legend>
-            
             <div layout="column" >
                 <md-checkbox  ng-click="includeCategory('sport')" >
                     Sport
@@ -71,46 +67,24 @@
                 <md-checkbox  ng-click="includeCategory('shop')">
                     Shop
                 </md-checkbox>
-
-                <!--                              <input type="checkbox" ng-click="includeColour('Red')"/> Red</br/>
-                        <input type="checkbox" ng-click="includeColour('Orange')"/> Orange</br/>
-                        <input type="checkbox" ng-click="includeColour('Yellow')"/> Yellow</br/>-->
-
             </div>
         </fieldset>
-
-
-
-
-        <!--         <div layout="row" layout-wrap>
-        
-            <div flex="100" flex-gt-sm="50" layout="column">
-              <div>
-                
-                  In IE, we cannot apply flex directly to <fieldset>
-                  @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
-                
-        -->                
-        <!--                <fieldset class="standard" >
-                          <legend>Categories </legend>
-                          <div layout="column" >
-                            <div ng-repeat="id in $scope.getCategories()">
-                              <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" ng-model="$scope.filter[id]">
-                                {{id}} <span ng-if="exists(item, selected)">selected</span>
-                              </md-checkbox>
+        <!--        <div layout="row" layout-wrap>      
+                    <div flex="100" flex-gt-sm="50" layout="column">                            
+                        <fieldset class="standard" >
+                            <legend>Categories </legend>
+                            <div layout="column" >
+                                <div ng-repeat="id in $scope.getCategories()">
+                                    <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)" ng-model="$scope.filter[id]">
+                                        {{id}} <span ng-if="exists(item, selected)">selected</span>
+                                    </md-checkbox>
+                                </div>
                             </div>
-                          </div>
-                        </fieldset>-->
-        <!--
-                      </div>
+                        </fieldset>      
                     </div>
-                    </div>-->
-
-    
-</md-content>  
-    </div>
-
-
+                </div>-->                    
+    </md-content>  
+</div>
 <ul uib-pagination 
     total-items="totalItems" 
     ng-model="currentPage"
