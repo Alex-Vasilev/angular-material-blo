@@ -158,4 +158,11 @@ angular.module('controllers', []).
                     success(function (data) {
                         $scope.postInfo = data;
                     });
-        });
+        }).
+        controller('LoginController',  function (authService) {
+
+    var vm = this;
+
+    vm.authService = authService;
+
+  });

@@ -5,21 +5,25 @@ var app = angular.module('myApp', [
     'ui.router',
     'directives',
     'ui.bootstrap',
-    'ngMaterial'
+    'ngMaterial',
+    'auth0.lock',
+    'angular-jwt'
 ]);
-app.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
+app.config(function ($stateProvider, lockProvider, $urlRouterProvider, $mdThemingProvider) {
     $stateProvider.
             state('app', {
                 url: '/app',
                 templateUrl: 'templates/appBody.html',
                 controller: 'AppBodyCtrl',
-                                resolve:{
-                    myResolve: function($q, postRestApiFactory){
+                resolve: {
+                    myResolve: function ($q, postRestApiFactory) {
                         var defer = $q.defer();
-                        postRestApiFactory.getPosts().success(function(data){
+                        postRestApiFactory.getPosts().success(function (data) {
                             defer.resolve(data);
 //                            console.log('a');
-                        }).error(function(data){defer.reject(data)});
+                        }).error(function (data) {
+                            defer.reject(data)
+                        });
                         return defer.promise;
                     }
                 }
@@ -28,13 +32,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
                 url: '/posts',
                 templateUrl: 'templates/posts.html',
                 controller: 'PostsCtrl',
-                resolve:{
-                    myResolve: function($q, postRestApiFactory){
+                resolve: {
+                    myResolve: function ($q, postRestApiFactory) {
                         var defer = $q.defer();
-                        postRestApiFactory.getPosts().success(function(data){
+                        postRestApiFactory.getPosts().success(function (data) {
                             defer.resolve(data);
 //                            console.log('a');
-                        }).error(function(data){defer.reject(data)});
+                        }).error(function (data) {
+                            defer.reject(data)
+                        });
                         return defer.promise;
                     }
                 }
@@ -44,14 +50,18 @@ app.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider) {
                 templateUrl: 'templates/post.html',
                 controller: 'PostCtrl'
             });
+    lockProvider.init({
+        clientID: '5CxFp5mFQgCfXwxSJLiSuEfzMECxDHTu',
+        domain: 'alex-vasilev.eu.auth0.com'
+    });
     $urlRouterProvider.otherwise('/app/posts');
-        $mdThemingProvider.theme('docs-dark', 'default')
-          .primaryPalette('yellow', {
-      'default': '300',
+    $mdThemingProvider.theme('docs-dark', 'default')
+            .primaryPalette('yellow', {
+                'default': '300',
 //      'hue-1': '400'
-    })
-         .warnPalette('red', {
-      'default': '300'
-    })
-      .dark();
+            })
+            .warnPalette('red', {
+                'default': '300'
+            })
+            .dark();
 });
