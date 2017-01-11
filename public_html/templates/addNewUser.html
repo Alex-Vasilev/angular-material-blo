@@ -3,20 +3,19 @@
         <h1>Registration</h1>
         <div>
             <md-input-container class="md-block">
-                <label>Name</label>
-                <input type='text' ng-model='post.title'>
+                 <label for="user">User</label>
+      <input class="form-control" id="user" type="text" name="username" ng-model="vm.username" />
             </md-input-container>
             <md-input-container class="md-block">
-                <label>E-mail</label>
-                <input type='text' ng-model='post.imageUrl'>
+          <label for="password">Password</label>
+      <input class="form-control" id="password" type="password" name="password" ng-model="vm.password" />
             </md-input-container>
-            <md-input-container class="md-block">
-                <label>Password</label>
-                <input type='text' ng-model='post.imageUrl'>
-            </md-input-container>
+
         </div>
         <div>
-            <md-button type="submit" ng-click='ok(post)'>Submit</md-button>
+            <md-button type="submit"  ng-click="vm.login()">Log In</md-button>
+             <md-button type="submit"  ng-click="vm.signup()">Sirn Up</md-button>
+
         </div>
     </md-content>
 </div>

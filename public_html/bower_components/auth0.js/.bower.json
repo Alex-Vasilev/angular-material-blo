@@ -1,0 +1,21 @@
+{
+  "//": "experimental bower support",
+  "name": "auth0.js",
+  "main": "build/auth0.js",
+  "dependencies": {},
+  "ignore": [
+    "test"
+  ],
+  "homepage": "https://github.com/auth0/auth0.js",
+  "version": "8.0.4",
+  "_release": "8.0.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "v8.0.4",
+    "commit": "9a20f0089903a1c248fdcdc0cd9eef1f2a2cc5e5"
+  },
+  "_source": "https://github.com/auth0/auth0.js.git",
+  "_target": "^8.0.4",
+  "_originalSource": "auth0.js",
+  "_direct": true
+}
