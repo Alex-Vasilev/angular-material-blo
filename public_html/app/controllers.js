@@ -11,7 +11,7 @@ angular.module('controllers', []).
         }).
         controller('PostsCtrl', function ($scope, myResolve, $state, $uibModal, postRestApiFactory) {
             $scope.posts = myResolve;
-            
+
             $scope.postInfo = function (id) {
                 $state.go('app.post', {id: id});
             };
@@ -33,7 +33,7 @@ angular.module('controllers', []).
                     console.log(data);
                 });
             };
-            
+
 //            pagination
             $scope.totalItems = $scope.posts.length;
             $scope.pageSize = 9;
@@ -134,4 +134,65 @@ angular.module('controllers', []).
                     success(function (data) {
                         $scope.postInfo = data;
                     });
+        })
+        
+//        auth
+
+        .controller('LoginController', loginController)
+        .controller('HomeController', homeController);
+
+
+loginController.$inject = ['authService'];
+
+function loginController(authService) {
+
+    var vm = this;
+
+    vm.authService = authService;
+
+    vm.login = function () {
+        // Show loading indicator
+        vm.message = 'loading...';
+        vm.loading = true;
+        authService.login(vm.user, vm.pass, function (err) {
+            if (err) {
+                vm.message = "something went wrong: " + err.message;
+                vm.loading = false;
+            }
         });
+    };
+
+    vm.signup = function () {
+        // Show loading indicator
+        vm.message = 'loading...';
+        vm.loading = true;
+        authService.signup(vm.user, vm.pass, function (err) {
+            if (err) {
+                vm.message = "something went wrong: " + err.message;
+                vm.loading = false;
+            }
+        });
+    };
+
+    vm.googleLogin = function () {
+        vm.message = 'loading...';
+        vm.loading = true;
+
+        authService.googleLogin(function (err) {
+            if (err) {
+                vm.message = "something went wrong: " + err.message;
+                vm.loading = false;
+            }
+        });
+    };
+};
+
+
+homeController.$inject = ['authService'];
+
+function homeController(authService) {
+
+    var vm = this;
+    vm.authService = authService;
+
+}
