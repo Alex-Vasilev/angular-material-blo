@@ -7,12 +7,12 @@ var app = angular.module('myApp', [
     'ui.bootstrap',
     'ngMaterial',
 //    'auth0.lock',
-    'angular-jwt', 
+    'angular-jwt',
     'auth0.auth0'
 ]);
 app.config(config);
 config.$inject = ['$stateProvider', 'angularAuth0Provider', '$urlRouterProvider', '$mdThemingProvider'];
-function config ($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThemingProvider) {
+function config($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThemingProvider) {
     $stateProvider.
             state('app', {
                 url: '/app',
@@ -54,18 +54,18 @@ function config ($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdTh
                 templateUrl: 'templates/post.html',
                 controller: 'PostCtrl'
             })
-                  .state('home', {
-        url: '/home',
-        controller: 'HomeController',
-        templateUrl: 'templates/home.html',
-        controllerAs: 'vm'
-      })
-            .state('login', {
-        url: '/login',
-        controller: 'LoginController',
-        templateUrl: 'templates/login.html',
-        controllerAs: 'vm'
-      });;
+//                  .state('home', {
+//        url: '/home',
+//        controller: 'HomeController',
+//        templateUrl: 'templates/home.html',
+//        controllerAs: 'vm'
+//      })
+//            .state('login', {
+//        url: '/login',
+//        controller: 'LoginController',
+//        templateUrl: 'templates/login.html',
+//        controllerAs: 'vm'
+//      });;
     angularAuth0Provider.init({
         clientID: '5CxFp5mFQgCfXwxSJLiSuEfzMECxDHTu',
         domain: 'alex-vasilev.eu.auth0.com'
@@ -83,12 +83,13 @@ function config ($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdTh
 };
 
 
-app.run(function ($rootScope, authService) {
+app.run(function ($rootScope, authService, authManager) {
 
-      // Put the authService on $rootScope so its methods
-      // can be accessed from the nav bar
-      $rootScope.authService = authService;
+    // Put the authService on $rootScope so its methods
+    // can be accessed from the nav bar
+    $rootScope.authService = authService;
 
-      // Process the auth token if it exists and fetch the profile
-      authService.authenticateAndGetProfile();
-    });
+    // Process the auth token if it exists and fetch the profile
+    authService.authenticateAndGetProfile();
+//      authManager.checkAuthOnRefresh();
+});

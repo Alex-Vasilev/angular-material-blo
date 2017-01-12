@@ -1,9 +1,65 @@
 angular.module('controllers', []).
         controller('MainCtrl', function ($scope) {
         }).
-        controller('AppBodyCtrl', function (authService) {
+        controller('AppBodyCtrl', function (authService, $scope, $state, $uibModal) {
             var vm = this;
             vm.authService = authService;
+
+
+//                $scope.logIn = function () {
+//                $state.go('login');
+//            };
+
+
+            $scope.logIn = function () {
+                $scope.addNewPostModal = $uibModal.open({
+                    templateUrl: 'templates/login.html',
+                    scope: $scope,
+                    size: 'md',
+                    animation: true
+                });
+            };
+
+
+
+            vm.login = function () {
+                // Show loading indicator
+                vm.message = 'loading...';
+                vm.loading = true;
+                authService.login(vm.user, vm.pass, function (err) {
+                    if (err) {
+                        vm.message = "something went wrong: " + err.message;
+                        vm.loading = false;
+                    }
+                });
+            };
+
+            vm.signup = function () {
+                // Show loading indicator
+                vm.message = 'loading...';
+                vm.loading = true;
+                authService.signup(vm.user, vm.pass, function (err) {
+                    if (err) {
+                        vm.message = "something went wrong: " + err.message;
+                        vm.loading = false;
+                    }
+                });
+            };
+
+            vm.googleLogin = function () {
+                vm.message = 'loading...';
+                vm.loading = true;
+
+                authService.googleLogin(function (err) {
+                    if (err) {
+                        vm.message = "something went wrong: " + err.message;
+                        vm.loading = false;
+                    }
+                });
+            };
+
+
+
         }).
         controller('AppHeader', function ($scope) {
         }).
@@ -135,64 +191,64 @@ angular.module('controllers', []).
                         $scope.postInfo = data;
                     });
         })
-        
+
 //        auth
 
-        .controller('LoginController', loginController)
-        .controller('HomeController', homeController);
+//        .controller('LoginController', loginController)
+////        .controller('HomeController', homeController);
+//
+//
+//loginController.$inject = ['authService'];
+//
+//function loginController(authService) {
+//
+//    var vm = this;
+//
+//    vm.authService = authService;
+//
+//    vm.login = function () {
+//        // Show loading indicator
+//        vm.message = 'loading...';
+//        vm.loading = true;
+//        authService.login(vm.user, vm.pass, function (err) {
+//            if (err) {
+//                vm.message = "something went wrong: " + err.message;
+//                vm.loading = false;
+//            }
+//        });
+//    };
+//
+//    vm.signup = function () {
+//        // Show loading indicator
+//        vm.message = 'loading...';
+//        vm.loading = true;
+//        authService.signup(vm.user, vm.pass, function (err) {
+//            if (err) {
+//                vm.message = "something went wrong: " + err.message;
+//                vm.loading = false;
+//            }
+//        });
+//    };
+//
+//    vm.googleLogin = function () {
+//        vm.message = 'loading...';
+//        vm.loading = true;
+//
+//        authService.googleLogin(function (err) {
+//            if (err) {
+//                vm.message = "something went wrong: " + err.message;
+//                vm.loading = false;
+//            }
+//        });
+//    };
+//};
 
 
-loginController.$inject = ['authService'];
-
-function loginController(authService) {
-
-    var vm = this;
-
-    vm.authService = authService;
-
-    vm.login = function () {
-        // Show loading indicator
-        vm.message = 'loading...';
-        vm.loading = true;
-        authService.login(vm.user, vm.pass, function (err) {
-            if (err) {
-                vm.message = "something went wrong: " + err.message;
-                vm.loading = false;
-            }
-        });
-    };
-
-    vm.signup = function () {
-        // Show loading indicator
-        vm.message = 'loading...';
-        vm.loading = true;
-        authService.signup(vm.user, vm.pass, function (err) {
-            if (err) {
-                vm.message = "something went wrong: " + err.message;
-                vm.loading = false;
-            }
-        });
-    };
-
-    vm.googleLogin = function () {
-        vm.message = 'loading...';
-        vm.loading = true;
-
-        authService.googleLogin(function (err) {
-            if (err) {
-                vm.message = "something went wrong: " + err.message;
-                vm.loading = false;
-            }
-        });
-    };
-};
-
-
-homeController.$inject = ['authService'];
-
-function homeController(authService) {
-
-    var vm = this;
-    vm.authService = authService;
-
-}
+//homeController.$inject = ['authService'];
+//
+//function homeController(authService) {
+//
+//    var vm = this;
+//    vm.authService = authService;
+//
+//}

@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<!--<div class="jumbotron">
   <h2 class="text-center"><img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg"></h2>
   <h2 class="text-center">Login</h2>
   <p class="text-center">{{vm.message}}</p>
@@ -23,4 +23,29 @@
       <a href="javascript:;" ng-click="vm.googleLogin()">Login with Google</a><br/>
     </div>
   </div>
+</div>-->
+
+
+<div layout="column" ng-cloak class="md-inline-form">
+    <md-content md-theme="docs-dark" layout-gt-lg="row" layout-padding>
+
+        <h1>Login</h1>
+        <p>{{vm.message}}</p>
+        <div>
+            <md-input-container class="md-block">
+                <label for="user">User</label>
+                <input  id="user" type="text" name="username" ng-model="vm.user" ng-disabled="vm.loading" />
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" ng-model="vm.pass" ng-disabled="vm.loading"/>
+            </md-input-container>
+
+        </div>
+        <div>
+            <md-button type="submit" ng-disabled="vm.loading" ng-click="vm.login()">Log In</md-button>
+            <md-button type="submit" ng-disabled="vm.loading" ng-click="vm.signup()">Sign Up</md-button>
+
+        </div>
+    </md-content>
 </div>

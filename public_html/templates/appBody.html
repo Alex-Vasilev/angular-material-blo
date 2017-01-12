@@ -1,43 +1,43 @@
 <md-content md-theme="docs-dark" 
-            layout-gt-sm="row"  
+            layout="row"  
             layout-align="space-between center"
-            layout-xs="column" 
+
             layout-padding>
     <h1 class="header-name" layout-align="start center" flex="auto">
         <i class="material-icons md-padding">whatshot</i>Hot Blog 
     </h1>   
-    <div layout="row" 
-         layout-xs="column" 
-         ng-cloak 
-         class="md-inline-form"  
-         flex="auto" 
-         layout-align="end center">        
-        <div class="inp1" layout-padding>    
-            <md-input-container>
-                <label>E-mail</label>
-                <input type="email">
-            </md-input-container>
-        </div>
-        <div layout-padding class="inp2">   
-            <md-input-container>
-                <label>Password</label>
-                <input  >
-            </md-input-container>
-        </div>
-<!--        <section layout="row" layout-align="center center" >
-            <md-button  ng-click="vm.authService.login()" ng-if="!isAuthenticated">
-                Sign In</md-button>
-            <md-button  ng-click="vm.authService.logout()" ng-if="isAuthenticated">
-                Log out</md-button>
-        </section>        -->
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a ui-sref="home">Home</a></li>
-              <li ng-if="!isAuthenticated"><a ui-sref="login">Log In</a></li>
-              <li ng-if="isAuthenticated"><a ui-sref="home" ng-click="authService.logout()">Log Out</a></li>
-            </ul>
-          </div>
-    </div>    
+    <!--    <div layout="row" 
+             layout-xs="column" 
+             ng-cloak 
+             class="md-inline-form"  
+             flex="auto" 
+             layout-align="end center">        -->
+    <!--        <div class="inp1" layout-padding>    
+                <md-input-container>
+                    <label>E-mail</label>
+                    <input type="email">
+                </md-input-container>
+            </div>
+            <div layout-padding class="inp2">   
+                <md-input-container>
+                    <label>Password</label>
+                    <input  >
+                </md-input-container>
+            </div>-->
+    <!--        <section layout="row" layout-align="center center" >
+                <md-button  ng-click="vm.authService.login()" ng-if="!isAuthenticated">
+                    Sign In</md-button>
+                <md-button  ng-click="vm.authService.logout()" ng-if="isAuthenticated">
+                    Log out</md-button>
+            </section>        -->
+
+    <!--<li><a ui-sref="home">Home</a></li>-->
+    <section layout="row" layout-align="center center" >
+        <md-button ng-if="!isAuthenticated" ng-click="logIn()">Log In</md-button>
+        <md-button ng-if="isAuthenticated" ng-click="authService.logout()">Log Out</md-button>
+    </section>  
+
+    <!--</div>-->    
 </md-content>
 <div ui-view class="main-content"></div>
 <p>Footer</p>
