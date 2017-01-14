@@ -1,10 +1,12 @@
 {
   "posts": [
     {
+      "userId": 1,
       "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
       "body": " rt[ogimtiombbr lniun!;o inerivn rinurbn \ne;ovntunvpern poernph potn pj;sihrwou poerhgp ohua \nae;ghpoh pohpohpo epogh psoghp spoirh poihserp oihp srhgp we8hg",
       "imageUrl": "img/img1.jpg",
-      "id": 1
+      "id": 1,
+      "category": "shop"
     },
     {
       "userId": 1,

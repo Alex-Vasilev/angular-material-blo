@@ -46,7 +46,6 @@ function authService(angularAuth0, authManager, $location) {
         }, callback);
     }
 
-
     // Logging out just requires removing the user's
     // id_token and profile
     function logout() {

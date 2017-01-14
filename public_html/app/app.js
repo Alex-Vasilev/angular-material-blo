@@ -10,9 +10,11 @@ var app = angular.module('myApp', [
     'angular-jwt',
     'auth0.auth0'
 ]);
+
 app.config(config);
-config.$inject = ['$stateProvider', 'angularAuth0Provider', '$urlRouterProvider', '$mdThemingProvider'];
-function config($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThemingProvider) {
+
+config.$inject = ['$stateProvider', 'angularAuth0Provider', '$urlRouterProvider', '$mdThemingProvider', 'jwtOptionsProvider'];
+function config($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThemingProvider, jwtOptionsProvider) {
     $stateProvider.
             state('app', {
                 url: '/app',
@@ -36,41 +38,31 @@ function config($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThe
                 url: '/posts',
                 templateUrl: 'templates/posts.html',
                 controller: 'PostsCtrl'
-//                resolve: {
-//                    myResolve: function ($q, postRestApiFactory) {
-//                        var defer = $q.defer();
-//                        postRestApiFactory.getPosts().success(function (data) {
-//                            defer.resolve(data);
-////                            console.log('a');
-//                        }).error(function (data) {
-//                            defer.reject(data)
-//                        });
-//                        return defer.promise;
-//                    }
-//                }
             }).
             state('app.post', {
                 url: '/post/{id}',
                 templateUrl: 'templates/post.html',
                 controller: 'PostCtrl'
             })
-//                  .state('home', {
-//        url: '/home',
-//        controller: 'HomeController',
-//        templateUrl: 'templates/home.html',
-//        controllerAs: 'vm'
-//      })
-//            .state('login', {
-//        url: '/login',
-//        controller: 'LoginController',
-//        templateUrl: 'templates/login.html',
-//        controllerAs: 'vm'
-//      });;
+
     angularAuth0Provider.init({
         clientID: '5CxFp5mFQgCfXwxSJLiSuEfzMECxDHTu',
         domain: 'alex-vasilev.eu.auth0.com'
     });
+
+    jwtOptionsProvider.config({
+        tokenGetter: ['options', function (options) {
+                if (options && options.url.substr(options.url.length - 5) == '.html') {
+                    return null;
+                }
+                return localStorage.getItem('id_token');
+            }],
+        whiteListedDomains: ['localhost'],
+        unauthenticatedRedirectPath: '/login'
+    });
+
     $urlRouterProvider.otherwise('/app/posts');
+
     $mdThemingProvider.theme('docs-dark', 'default')
             .primaryPalette('yellow', {
                 'default': '300'
@@ -80,8 +72,7 @@ function config($stateProvider, angularAuth0Provider, $urlRouterProvider, $mdThe
                 'default': '300'
             })
             .dark();
-};
-
+}
 
 app.run(function ($rootScope, authService, authManager) {
 
@@ -91,5 +82,5 @@ app.run(function ($rootScope, authService, authManager) {
 
     // Process the auth token if it exists and fetch the profile
     authService.authenticateAndGetProfile();
-//      authManager.checkAuthOnRefresh();
+    authManager.checkAuthOnRefresh();
 });

@@ -3,11 +3,23 @@
         <!--<div class='md-padding filtered' >Filtered news: {{categoryIncludes.join(', ') || 'all'}}</div>-->
         <md-card  ng-repeat="post in posts| filter: search | filter: categoryFilter | startFrom : (currentPage - 1) * pageSize | limitTo : 9| orderBy:sortType:sortReverse"
                   ng-click="postInfo(post.id)">
+                    <md-card-header>
+          <!--<md-card-avatar>-->
+            <i class="material-icons">cancel</i>
+          <!--</md-card-avatar>-->
+          <md-card-header-text>
+            <span class="md-title">{{post.category}}</span>
+            <span class="md-subhead">{{post.date}}</span>
+          </md-card-header-text>
+        </md-card-header>
+            
             <img src="{{post.imageUrl}}" class="md-card-image" alt="Image">
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{post.title}}</span>
+                    <span class="md-subhead">Material</span>
                 </md-card-title-text>
+                
             </md-card-title>
             <md-card-content>
                 <p>{{post.body}}</p>

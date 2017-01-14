@@ -6,38 +6,10 @@
     <h1 class="header-name" layout-align="start center" flex="auto">
         <i class="material-icons md-padding">whatshot</i>Hot Blog 
     </h1>   
-    <!--    <div layout="row" 
-             layout-xs="column" 
-             ng-cloak 
-             class="md-inline-form"  
-             flex="auto" 
-             layout-align="end center">        -->
-    <!--        <div class="inp1" layout-padding>    
-                <md-input-container>
-                    <label>E-mail</label>
-                    <input type="email">
-                </md-input-container>
-            </div>
-            <div layout-padding class="inp2">   
-                <md-input-container>
-                    <label>Password</label>
-                    <input  >
-                </md-input-container>
-            </div>-->
-    <!--        <section layout="row" layout-align="center center" >
-                <md-button  ng-click="vm.authService.login()" ng-if="!isAuthenticated">
-                    Sign In</md-button>
-                <md-button  ng-click="vm.authService.logout()" ng-if="isAuthenticated">
-                    Log out</md-button>
-            </section>        -->
-
-    <!--<li><a ui-sref="home">Home</a></li>-->
     <section layout="row" layout-align="center center" >
         <md-button ng-if="!isAuthenticated" ng-click="logIn()">Log In</md-button>
         <md-button ng-if="isAuthenticated" ng-click="authService.logout()">Log Out</md-button>
-    </section>  
-
-    <!--</div>-->    
+    </section>    
 </md-content>
 <div ui-view class="main-content"></div>
 <p>Footer</p>
