@@ -100,7 +100,7 @@ function authService(angularAuth0, authManager, $location, $q, $rootScope) {
 
 
     $rootScope.$on('$stateChangeStart', function(event, nextRoute) {
-      if (nextRoute.controller === 'PostsCtrl') {
+      if (nextRoute.controller === 'AdminCtrl') {
         if (!isAdmin()) {
           alert('You are not allowed to see the Admin content');
 //          return event.preventDefault();
