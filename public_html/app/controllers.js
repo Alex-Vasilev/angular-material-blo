@@ -60,7 +60,7 @@ angular.module('controllers', []).
         }).
         controller('PostsCtrl', function ($scope, myResolve, $state, $uibModal, postRestApiFactory) {
             $scope.posts = myResolve;
-
+            console.log($scope.posts)
             $scope.postInfo = function (id) {
                 $state.go('app.post', {id: id});
             };

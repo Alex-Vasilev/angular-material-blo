@@ -83,7 +83,7 @@ h1{
     height: auto;*/
 }
 
-.inp1 md-input-container,
+/*.inp1 md-input-container,
 .inp2 md-input-container
 {
     margin-bottom: 0;
@@ -92,7 +92,7 @@ h1{
 .layout-padding{
     padding-bottom: 0;
     padding-top: 0;
-}
+}*/
 
 /* md-content.items{
     display: flex;
@@ -137,4 +137,24 @@ fieldset.standard {
 
 fieldset.standard legend{
     margin-bottom: 15px;
+}
+
+.filtered{
+    margin-bottom: 10px;
+    margin-left: 9px;
+    color: #999;
+}
+
+md-card-actions .material-icons,
+.date{
+    color: #999;
+}
+
+.main-content{
+    padding-top: 12px;
+}
+
+.greetings{
+    font-size: 20px;
+    color: #777;
 }
