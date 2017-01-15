@@ -6,6 +6,7 @@
     <h1 class="header-name" layout-align="start center" flex="auto">
         <i class="material-icons md-padding">whatshot</i>Hot Blog 
     </h1>   
+    <h2 ng-if="isAuthenticated">Hey, {{ vm.profile.nickname }}, nice to see you!!</h2>
     <section layout="row" layout-align="center center" >
         <md-button ng-if="!isAuthenticated" ng-click="logIn()">Log In</md-button>
         <md-button ng-if="isAuthenticated" ng-click="authService.logout()">Log Out</md-button>

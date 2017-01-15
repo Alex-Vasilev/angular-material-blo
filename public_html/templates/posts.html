@@ -24,7 +24,7 @@
             <md-card-content>
                 <p>{{post.body}}</p>
             </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
+            <md-card-actions layout="row" layout-align="end center" ng-if="isAdmin">
                 <md-button class="btn1" ng-click="openEditModal(post, $index); $event.stopPropagation()">
                     Edit
                 </md-button>

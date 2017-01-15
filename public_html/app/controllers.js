@@ -49,6 +49,10 @@ angular.module('controllers', []).
                     }
                 });
             };
+
+            authService.getProfileDeferred().then(function (profile) {
+                vm.profile = profile;
+            });
         }).
         controller('AppHeader', function ($scope) {
         }).
