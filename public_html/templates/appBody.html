@@ -2,8 +2,9 @@
             layout="row"  
             layout-align="space-between center"
             class='header'
+            id='header'
             layout-padding>
-    <h1 class="header-name" layout-align="start center" flex="auto">
+    <h1 class="header-name"  flex="auto">
         <i class="material-icons md-padding">whatshot</i>Hot Blog 
     </h1>   
     <span layout-align="center" class='greetings' ng-if="isAuthenticated">Hey, {{ vm.profile.nickname }}, nice to see you!!</span>

@@ -1,132 +1,18 @@
-/*body {
-  font-family: Arial, sans-serif;
+/*header*/
+
+h1.header-name{
+ margin: 0;
 }
 
-input {
-  padding: 3px 5px;
-  border: 1px solid gray;
-  border-radius: 3px;
-}
-
-.list {
-  list-style-type: none;
-  margin: 0;
-  opacity: 0;
-  padding: 4px 7px;
-  position: absolute;
-  margin-left: -1000px;
-  background: white;
-  box-shadow: 1px 1px 6px rgb(195, 195, 195);
-  border-radius: 2px;
-  -webkit-transition: opacity 0.4s;
-  transition: opacity 0.4s;
-}
-
-.list li {
-  padding: 3px 5px;
-  cursor: pointer;
-}
-
-.list li:hover {
-  background: lightgray;
-}
-
-.show .list { 
-  margin-left: 0;
-  opacity: 1;
-}
-
-.list li .amount {
-  display: inline-block;
-  padding: 2px 3px;
-  background-color: rgb(83, 177, 211);
-  border-radius: 3px;
-  margin: 0 0 3px 10px;
-  font-size: 65%;
-  color: white;
-}
-
-.green {
-  background: #b9f6ca; }*/
-
-
-/*.btn1 {
-  color : rgb(49, 46, 46);
-  background-color: rgba(255, 222, 121, 0.96);
-  border-radius: 10px 0 0 10px;
-  font-size: 16px;
-}
-
-.btn1:not([disabled]):hover {
-  background-color: rgba(107, 103, 91, 0.96);
-  color: white;
-}
-
-.btn1[disabled] {
-  color : rgb(187, 187, 187);
-  background-color: rgba(230, 230, 229, 0.96);
-}*/
-h1,
-h1 i.material-icons{
-    /*font-size: 36px;*/
-    /*line-height: 0;*/
-    /*background: red;*/
-    
-}
-
-h1{
-   /*padding-bottom: 0;*/ 
-}
-
-.column{
-/*    columns: 3;
-    height: auto;*/
-}
-
-/*.inp1 md-input-container,
-.inp2 md-input-container
-{
-    margin-bottom: 0;
-}
-
-.layout-padding{
+md-card md-card-title{
+    padding: 15px 16px 5px 16px;
+} 
+md-card-title+md-card-content{
     padding-bottom: 0;
-    padding-top: 0;
-}*/
-
-/* md-content.items{
-    display: flex;
-   flex-direction: column; 
-   flex-wrap: wrap;
-   min-height: 100vw;
-   max-height: 2700px;
-   font-size: 0;
-   
 }
-
-md-card{
-     width: 33.3%;
-  transition: .8s opacity;
-}*/
-
-
-
-/*md-content.items {
-    -moz-column-count: 3;
-    -webkit-column-count: 3;
-    column-count: 3;
-    -moz-column-gap: 1em;
-    -webkit-column-gap: 1em;
-    column-gap: 1em;
+md-card md-card-title md-card-title-text:only-child .md-subhead {
+    padding-top: 7px;
 }
-
-md-card {
-    float: left;
-    display: inline-block;
-    margin: 0 0 1em;
-    width: 100%;
-}*/
-
 md-checkbox:not([disabled]).md-checked .md-icon{
     background-color: #464646;
 }
@@ -151,10 +37,17 @@ md-card-actions .material-icons,
 }
 
 .main-content{
-    padding-top: 12px;
+    /*padding-top: 10px;*/
 }
 
 .greetings{
     font-size: 20px;
-    color: #777;
+    /*color: #A5A3A8;*/
+}
+
+.header{
+    /*height: 70px;*/
+    transition: all 0.3s;
+    opacity: 1;
+    /*background: rgb(49, 50, 54);*/
 }

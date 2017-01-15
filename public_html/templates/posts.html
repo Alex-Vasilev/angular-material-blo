@@ -1,5 +1,5 @@
 <div layout='row' layout-align="center top">
-    <md-content class="md-padding items" layout-xs="column" ng-cloack flex="50">
+    <md-content class="md-padding items" layout-xs="column" ng-cloack flex="35">
         <div class='filtered' >Filtered news: {{categoryIncludes.join(', ') || 'all'}}</div>
         <md-card  ng-repeat="post in posts| filter: search | filter: categoryFilter | startFrom : (currentPage - 1) * pageSize | limitTo : 9| orderBy:sortType:sortReverse"
                   ng-click="postInfo(post.id)">
