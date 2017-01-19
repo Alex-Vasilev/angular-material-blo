@@ -1,18 +1,16 @@
 <div layout="row" layout-align="center center">
-<md-content class="md-padding" ng-cloack > 
-        <md-card >
-            <img src="{{postInfo.imageUrl}}" class="md-card-image" alt="Image">
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">{{postInfo.title}}</span>
-                </md-card-title-text>
-            </md-card-title>
-            <md-card-content>
-                <p>{{postInfo.body}}</p>
-            </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
+    <md-content class="md-padding" ng-cloack > 
 
-            </md-card-actions>
-        </md-card>
-      </md-content>
-    </div>
+        <img src="{{postInfo.imageUrl}}" class="md-card-image" alt="Image">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{postInfo.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p>{{postInfo.body}}</p>
+        </md-card-content>
+
+    </md-content>
+    <md-button ng-click='back()'>Back</md-button>
+</div>

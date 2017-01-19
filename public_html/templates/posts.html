@@ -1,8 +1,9 @@
 <div layout='row' layout-align="center top">
-    <md-content class="md-padding items" layout-xs="column" ng-cloack flex="35">
+    <md-content class="md-padding items" layout-xs="column" ng-cloack flex="35" flex-sm='65' flex-md='50'>
         <div class='filtered' >Filtered news: {{categoryIncludes.join(', ') || 'all'}}</div>
         <md-card  ng-repeat="post in posts| filter: search | filter: categoryFilter | startFrom : (currentPage - 1) * pageSize | limitTo : 9| orderBy:sortType:sortReverse"
-                  ng-click="postInfo(post.id)">
+                  ng-click="postInfo(post.id)"
+                  class='card'>
             <!--                    <md-card-header>
                       <md-card-avatar>
                         <i class="material-icons">cancel</i>
@@ -19,35 +20,44 @@
                     <span class="md-headline">{{post.title}}</span>
                     <span class="md-subhead date">{{post.date}}</span>
                 </md-card-title-text>
-
             </md-card-title>
             <md-card-content>
                 <p>{{post.body}}</p>
             </md-card-content>
-            <md-card-actions layout="row" layout-align="end center">
-                <md-button class="md-icon-button" aria-label="Favorite">
-
+            <md-card-actions layout="row"   layout-align="end center" ng-click="$event.stopPropagation()">
+                <div>
+                    <md-button class="btn1" ng-click="openEditModal(post, $index)">
+                        Edit
+                    </md-button>
+                    <md-button ng-click="openDeletePostModal($index, post.id)">
+                        Delete
+                    </md-button>
+                </div>
+                <div ng-model="postLike.like" ng-init="postLike.like = post.like" >{{post.like}}</div> 
+                <md-button class="md-icon-button" aria-label="Favorite"  ng-click="pressLike(postLike, id)">
                     <i class="material-icons">favorite</i>
                 </md-button>
-                <md-button class="md-icon-button" aria-label="Comment">
+                <md-button class="md-icon-button comment-active"  id="but" aria-label="Comment" ng-click="goComment = !goComment; addClassComment()">
                     <i class="material-icons">comment</i>
                 </md-button>
                 <md-button class="md-icon-button" aria-label="Share">
                     <i class="material-icons">reply</i>
                 </md-button>
-                <md-button class="btn1" ng-click="openEditModal(post, $index); $event.stopPropagation()">
-                    Edit
-                </md-button>
-
-                <md-button ng-click="openDeletePostModal($index, post.id); $event.stopPropagation()">
-                    Delete
-                </md-button>
             </md-card-actions>
-
-
+            <div class='layout-padding comment' ng-click="$event.stopPropagation()" ng-show='goComment'>
+                <md-input-container class="md-block md-inline-form" md-padding >
+                    <label>Comment</label>
+                    <textarea  rows="4" md-padding></textarea>
+                </md-input-container>
+                <div>
+                <md-button class="send-comment" ng-click="">
+                    Send
+                </md-button>
+                    </div>
+            </div>
         </md-card>
     </md-content>
-    <md-content flex='20'>
+    <md-content flex='20' flex-sm='30' flex-md='30' flex-offset="5" class="md-block md-padding">
         <md-input-container class="md-block">
             <label><i class="material-icons">search</i></label>
             <input ng-model="search.$">

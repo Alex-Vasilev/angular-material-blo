@@ -1,7 +1,7 @@
 /*header*/
 
 h1.header-name{
- margin: 0;
+    margin: 0;
 }
 
 md-card md-card-title{
@@ -22,7 +22,9 @@ fieldset.standard {
 }
 
 fieldset.standard legend{
-    margin-bottom: 15px;
+    margin-bottom: 7px;
+    padding-bottom: 10px;
+    color: #666;
 }
 
 .filtered{
@@ -50,4 +52,56 @@ md-card-actions .material-icons,
     transition: all 0.3s;
     opacity: 1;
     /*background: rgb(49, 50, 54);*/
+}
+
+.ng-hide{
+    transition: all 0.3s;
+    height: 0;
+}
+
+.card{
+    position: relative;
+}
+
+.comment.ng-hide{
+    opacity: 0;
+    /*width: 80%;*/
+    /*height: 0;*/
+    transition: all 0.5s;
+    /*background: #fff;*/
+    top: 89%;
+
+
+    /*left: 50%;*/
+}
+.comment{
+    width: 100%;
+    position: absolute;
+    /*height: 130px;*/
+    transition: all 0.5s;
+    opacity: 1;
+    z-index: 99;
+    background: #eee;
+    top: 99%;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}/*
+/*.card{
+     transition: all 0.7s;
+     height: auto;
+}
+
+.card.com-card{  
+    height: 750px;
+}*/
+md-input-container.md-block{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.send-comment{
+    margin-top: 0;
+}
+
+.comment > div{
+    margin-top: 0;
 }

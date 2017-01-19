@@ -35,7 +35,14 @@ angular.module('factory', []).
                         method: 'DELETE',
                         url: generalItems.option.deletePost(id)                        
                     });
-                }
+                },
+                pressCurrentLike: function (post) {
+                    return $http({
+                        method: 'PUT',
+                        url: generalItems.option.likePost,
+                        data: post
+                    });
+                },
             };
         });
 

@@ -127,6 +127,10 @@ angular.module('controllers', []).
                     console.log(data);
                 })
             };
+            
+             $scope.addClass = function(){
+    $('.comment').toggleClass('active');
+}
 
             $scope.categoryIncludes = [];
 
@@ -146,7 +150,29 @@ angular.module('controllers', []).
                 }
                 return posts;
             };
-
+            
+            $scope.pressLike = function(){
+                $scope.valLikes 
+            };
+            
+            $scope.goComment = false;
+            
+                        $scope.pressLike = function (post) {
+//                            alert(1)
+                            
+                            
+                             $scope.currentPost = post;
+                             $scope.currentPost.like++;
+//                $scope.currentPost.index = index;
+                console.log($scope.currentPost)
+                console.log($scope.currentPost.like)
+                postRestApiFactory.pressCurrentLike(post, $scope.currentPost).
+                        success(function (data) {
+                            $scope.posts[$scope.currentPost.like] = data;
+                            console.log($scope.posts[$scope.currentPost.index]);
+//                            $scope.editPostModal.close();
+                        });
+            };
 //            $scope.filter = {};
 ////
 ////                // Functions - Public
@@ -177,10 +203,14 @@ angular.module('controllers', []).
 //                }
 
         }).
-        controller('PostCtrl', function ($scope, $stateParams, postRestApiFactory) {
+        controller('PostCtrl', function ($scope, $stateParams, postRestApiFactory, $state) {
             $scope.postInfo = {};
             postRestApiFactory.getPost($stateParams.id).
                     success(function (data) {
                         $scope.postInfo = data;
                     });
+                    
+            $scope.back = function(){
+                $state.go('app.posts');
+            }
         });

@@ -7,6 +7,7 @@ angular.module('service', []).
                     return domain + 'posts/' + id + '/';
                 },
                 addPost: domain + 'posts/',
+                likePost: domain + 'posts/',
                 editCurrentPost: function (id) {
                     return domain + 'posts/' + id + '/';
                 },
